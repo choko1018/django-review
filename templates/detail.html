@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .container {
+        max-width: 800px;
+        margin-top: 30px;
+    }
+    .card {
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .card-title, .card-text {
+        color: #495057;
+        margin-bottom: 15px;
+    }
+    .btn-primary {
+        background-color: #28a745;
+        border: none;
+        margin-right: 10px;
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+    }
+    .btn-primary:hover, .btn-secondary:hover {
+        opacity: 0.9;
+    }
+    .product-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+    .useful-count {
+        color: #ffc107;
+    }
+</style>
+{% endblock %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">
+            <i class="fas fa-star mr-2"></i>{{ object.title }}
+        </h5>
+        <div class="card-body">
+            {% if object.product_image %}
+                <img src='{{ object.product_image.url }}' class="product-image" alt="{{ object.title }}">
+            {% endif %}
+            <h5 class="card-title">
+                <i class="fas fa-user mr-2"></i>投稿者: {{ object.author }}
+            </h5>
+            <p class="card-text">
+                <i class="fas fa-comment mr-2"></i>レビュー内容: {{ object.content }}
+            </p>
+            <p class="card-text useful-count">
+                <i class="fas fa-thumbs-up mr-2"></i>レビューが参考になった人: {{ object.useful_num }}人
+            </p>
+            <a href="{% url 'evaluation' object.pk %}" class="btn btn-primary">
+                <i class="fas fa-star mr-2"></i>評価する
+            </a>
+            <a href="{% url 'list' %}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left mr-2"></i>一覧に戻る
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

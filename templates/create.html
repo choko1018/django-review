@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+{%if user.is_authenticated %}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <p>タイトル:<input type='text' name='title' ></p>
+                <P>内容<input type='text' name='content' ></P>
+                <p>画像<input type='file' name='product_image' ></p>
+                <input type='hidden' name='author' value='{{ user.id }}'>
+                <input type='submit' value='作成する'>
+            </form>
+        </div>
+    </div>
+</div>
+{% else %}
+    ログインしてください。
+    <a href="{% url 'login' %}" class="btn btn-primary" role="button" aria-pressed="true">ログイン画面へ</a>
+{% endif %}
+{% endblock content %}
