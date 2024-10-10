@@ -15,7 +15,7 @@ class ReviewModel(models.Model):
            resp = blob.put(
                pathname=self.product_image.name,
                body=self.product_image,
-               options={'token': settings.vercel_blob_token}
+               options={'token': settings.VERCEL_BLOB_TOKEN}
            )
            self.product_image = None
            self.product_image_url = resp['url'] 

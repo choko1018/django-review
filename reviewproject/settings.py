@@ -82,7 +82,7 @@ READ_ENV_FILE = env.bool('DJANGO_READ_ENV_FILE' , default=True)
 if READ_ENV_FILE:
     env_file = str(BASE_DIR)+'/.env'
     env.read_env(env_file)
-vercel_blob_token=env('VERCEL_BLOB_TOKEN')
+VERCEL_BLOB_TOKEN = env('VERCEL_BLOB_TOKEN')
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
