@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from vercel_storage import blob
+from django.conf import settings
 # Create your models here.
 class ReviewModel(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
