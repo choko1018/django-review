@@ -62,8 +62,8 @@
             <i class="fas fa-star mr-2"></i>{{ object.title }}
         </h5>
         <div class="card-body">
-            {% if object.product_image %}
-                <img src='{{ object.product_image.url }}' class="product-image" alt="{{ object.title }}">
+            {% if object.product_image_url %}
+                <img src='{{ object.product_image_url }}' class="product-image" alt="{{ object.title }}">
             {% endif %}
             <h5 class="card-title">
                 <i class="fas fa-user mr-2"></i>投稿者: {{ object.author }}
